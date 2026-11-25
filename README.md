@@ -9,7 +9,7 @@ For hostile targets in melee range, it shows:
 
 The up/down artwork comes from fixed pfQuest arrow frames; FrontBack does not use its animated or rotating behavior.
 
-Optionally, `/frontback text` shows `FRONT` or `BACK` below the icon. The setting is saved per character.
+By default, `FRONT` or `BACK` appears below the icon. `/frontback text` toggles it, and the setting is saved per character.
 
 Drag the frame to move it. Position and visibility are saved per character.
 

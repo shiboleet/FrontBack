@@ -2,7 +2,7 @@ FrontBackData = { name = "FrontBack", version = "1.1.0" }
 
 local Defaults = {
     Enabled = true,
-    ShowText = false,
+    ShowText = true,
     HudX = 0,
     HudY = -170,
 }
@@ -343,6 +343,9 @@ local function Initialise()
         Config.Enabled = Defaults.Enabled
     end
     Config.Enabled = (Config.Enabled == true)
+    if Config.ShowText == nil then
+        Config.ShowText = Defaults.ShowText
+    end
     Config.ShowText = (Config.ShowText == true)
     for _, key in ipairs({ "HudX", "HudY" }) do
         local value = tonumber(Config[key])
