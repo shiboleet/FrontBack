@@ -11,6 +11,8 @@ The up/down artwork comes from fixed pfQuest arrow frames; FrontBack does not us
 
 By default, `FRONT` or `BACK` appears below the icon. `/frontback text` toggles it, and the setting is saved per character.
 
+`/frontback degrees` optionally adds the shortest movement amount below the status text, such as `< 45deg` or `45deg >`. This does not change the 3D arrow.
+
 Drag the frame to move it. Position and visibility are saved per character.
 
 ## Commands
@@ -18,6 +20,7 @@ Drag the frame to move it. Position and visibility are saved per character.
 - `/frontback` - toggle the HUD
 - `/frontback on|off`
 - `/frontback text` - toggle `FRONT`/`BACK` text below the arrow
+- `/frontback degrees` - toggle the number of degrees to move
 - `/frontback reset` - restore the default position
 - `/frontback status`
 - `/frontback help`

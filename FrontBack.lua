@@ -3,6 +3,7 @@ FrontBackData = { name = "FrontBack", version = "1.1.0" }
 local Defaults = {
     Enabled = true,
     ShowText = true,
+    ShowDegrees = false,
     HudX = 0,
     HudY = -170,
 }
@@ -230,6 +231,13 @@ UpdateHUD = function()
     else
         HUD.status:Hide()
     end
+    local directionHint = DirectionHint()
+    HUD.degrees:SetText(directionHint)
+    if Config.ShowDegrees and directionHint ~= "" then
+        HUD.degrees:Show()
+    else
+        HUD.degrees:Hide()
+    end
 end
 
 local function SaveHUDPosition()
@@ -253,7 +261,7 @@ local function CreateHUD()
     end
     HUD = CreateFrame("Frame", "FrontBackHUD", UIParent)
     HUD:SetWidth(64)
-    HUD:SetHeight(82)
+    HUD:SetHeight(96)
     HUD:SetFrameStrata("HIGH")
     HUD:EnableMouse(true)
     HUD:SetMovable(true)
@@ -273,6 +281,9 @@ local function CreateHUD()
     HUD.status = HUD:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     HUD.status:SetPoint("TOP", HUD.arrow, "BOTTOM", 0, -2)
     HUD.status:Hide()
+    HUD.degrees = HUD:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    HUD.degrees:SetPoint("TOP", HUD.status, "BOTTOM", 0, -1)
+    HUD.degrees:Hide()
     HUD.elapsed = 0
     HUD:SetScript("OnUpdate", function()
         this.elapsed = this.elapsed + arg1
@@ -294,6 +305,7 @@ local function PrintHelp()
     Print("  /frontback - toggle the positioning HUD")
     Print("  /frontback on|off - explicitly enable or disable it")
     Print("  /frontback text - toggle FRONT/BACK text below the arrow")
+    Print("  /frontback degrees - toggle movement degrees below the status text")
     Print("  /frontback reset - restore the default HUD position and enable it")
     Print("  /frontback status - show the current state")
 end
@@ -318,6 +330,10 @@ function FrontBack_Command(message)
         Config.ShowText = not Config.ShowText
         UpdateHUD()
         Print("status text is " .. OnOff(Config.ShowText))
+    elseif command == "degrees" or command == "degree" then
+        Config.ShowDegrees = not Config.ShowDegrees
+        UpdateHUD()
+        Print("movement degrees are " .. OnOff(Config.ShowDegrees))
     elseif command == "reset" then
         Config.Enabled = true
         Config.HudX = Defaults.HudX
@@ -347,6 +363,10 @@ local function Initialise()
         Config.ShowText = Defaults.ShowText
     end
     Config.ShowText = (Config.ShowText == true)
+    if Config.ShowDegrees == nil then
+        Config.ShowDegrees = Defaults.ShowDegrees
+    end
+    Config.ShowDegrees = (Config.ShowDegrees == true)
     for _, key in ipairs({ "HudX", "HudY" }) do
         local value = tonumber(Config[key])
         if not value or value ~= value then
