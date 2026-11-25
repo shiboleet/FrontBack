@@ -28,7 +28,7 @@ Drag the frame to move it. Position and visibility are saved per character.
 - `UnitXP_SP3.dll` is recommended for authoritative NPC behind checks and accurate melee distance.
 - `SuperWoW.dll` / `SuperWoWhook.dll` provides `UnitPosition` and `UnitFacing`. FrontBack uses this geometry for player targets and as a fallback for NPCs.
 
-## Installion
+## Installation
 
 If FrontBack is installed at `<WoW_Dir>\Interface\AddOns\FrontBack`, close the game and double-click `install_dependencies.bat`. It auto-detects the WoW root, downloads the current official releases when needed, validates the DLLs, backs up `dlls.txt`, and registers both filenames without duplicates. It prompts for the WoW folder only if the normal three-parent path is wrong.
 
