@@ -1,0 +1,7 @@
+## Interface: 11200
+## Title: FrontBack |cff808080by Kitane
+## Author: Kitane
+## Notes: Lightweight UnitXP/SuperWoW front-or-behind positioning HUD for melee targets.
+## SavedVariablesPerCharacter: FrontBackVariables
+
+FrontBack.lua
